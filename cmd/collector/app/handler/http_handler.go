@@ -17,14 +17,14 @@ package handler
 
 import (
 	"fmt"
-	"io/ioutil"
-	"mime"
-	"net/http"
-	"time"
-	"strconv"
 	"github.com/apache/thrift/lib/go/thrift"
 	"github.com/gorilla/mux"
 	"github.com/thinkeridea/go-extend/exnet"
+	"io/ioutil"
+	"mime"
+	"net/http"
+	"strconv"
+	"time"
 
 	"github.com/jaegertracing/jaeger/cmd/collector/app/processor"
 	tJaeger "github.com/jaegertracing/jaeger/thrift-gen/jaeger"
@@ -95,9 +95,13 @@ func (aH *APIHandler) SaveSpan(w http.ResponseWriter, r *http.Request) {
 		ip = exnet.ClientIP(r)
 	}
 	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "remoteAddr", VStr: &ip})
-	// append to Tags current server time
-	stime := strconv.FormatInt(time.Now().UnixNano(), 10)
-	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "stime", VStr: &stime})
+
+	for index := range batch.Spans {
+		// append to Tags current server time
+		stime := strconv.FormatInt(time.Now().UnixNano(), 10)
+		batch.Spans[index].Tags = append(batch.Spans[index].GetTags(), &tJaeger.Tag{Key: "stime", VStr: &stime})
+	}
+
 	batches := []*tJaeger.Batch{batch}
 	opts := SubmitBatchOptions{InboundTransport: processor.HTTPTransport}
 	if _, err = aH.jaegerBatchesHandler.SubmitBatches(batches, opts); err != nil {
