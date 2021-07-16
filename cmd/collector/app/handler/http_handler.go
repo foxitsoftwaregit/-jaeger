@@ -89,15 +89,15 @@ func (aH *APIHandler) SaveSpan(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, fmt.Sprintf(UnableToReadBodyErrFormat, err), http.StatusBadRequest)
 		return
 	}
-
-	ip :=   exnet.ClientPublicIP(r)
+	// extract client ip from request, append to Tags
+	ip := exnet.ClientPublicIP(r)
 	if ip == "" {
 		ip = exnet.ClientIP(r)
 	}
-	// extract client ip from request, append to Tags
 	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "remoteAddr", VStr: &ip})
 	// append to Tags current server time
-	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "stime", VStr: time.Now().Unix()})
+	stime := strconv.FormatInt(time.Now().Unix(), 10)
+	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "stime", VStr: *stime})
 	batches := []*tJaeger.Batch{batch}
 	opts := SubmitBatchOptions{InboundTransport: processor.HTTPTransport}
 	if _, err = aH.jaegerBatchesHandler.SubmitBatches(batches, opts); err != nil {
