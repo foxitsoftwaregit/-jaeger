@@ -20,9 +20,11 @@ import (
 	"io/ioutil"
 	"mime"
 	"net/http"
+	"time"
 
 	"github.com/apache/thrift/lib/go/thrift"
 	"github.com/gorilla/mux"
+	"github.com/thinkeridea/go-extend/exnet"
 
 	"github.com/jaegertracing/jaeger/cmd/collector/app/processor"
 	tJaeger "github.com/jaegertracing/jaeger/thrift-gen/jaeger"
@@ -87,6 +89,15 @@ func (aH *APIHandler) SaveSpan(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, fmt.Sprintf(UnableToReadBodyErrFormat, err), http.StatusBadRequest)
 		return
 	}
+
+	ip :=   exnet.ClientPublicIP(r)
+	if ip == "" {
+		ip = exnet.ClientIP(r)
+	}
+	// extract client ip from request, append to Tags
+	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "remoteAddr", VStr: &ip})
+	// append to Tags current server time
+	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "stime", VStr: time.Now().Unix()})
 	batches := []*tJaeger.Batch{batch}
 	opts := SubmitBatchOptions{InboundTransport: processor.HTTPTransport}
 	if _, err = aH.jaegerBatchesHandler.SubmitBatches(batches, opts); err != nil {
