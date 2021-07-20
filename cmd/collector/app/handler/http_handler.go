@@ -94,13 +94,10 @@ func (aH *APIHandler) SaveSpan(w http.ResponseWriter, r *http.Request) {
 	if ip == "" {
 		ip = exnet.ClientIP(r)
 	}
+	// append to Tags current server time, millsecs
+	stime := strconv.FormatInt(time.Now().UnixNano()/1000000, 10)
 	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "remoteAddr", VStr: &ip})
-
-	for index := range batch.Spans {
-		// append to Tags current server time
-		stime := strconv.FormatInt(time.Now().UnixNano(), 10)
-		batch.Spans[index].Tags = append(batch.Spans[index].GetTags(), &tJaeger.Tag{Key: "stime", VStr: &stime})
-	}
+	batch.Process.Tags = append(batch.Process.GetTags(), &tJaeger.Tag{Key: "_stime", VStr: &stime})
 
 	batches := []*tJaeger.Batch{batch}
 	opts := SubmitBatchOptions{InboundTransport: processor.HTTPTransport}
