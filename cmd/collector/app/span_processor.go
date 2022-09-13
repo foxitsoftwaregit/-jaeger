@@ -17,6 +17,7 @@ package app
 
 import (
 	"context"
+	"strconv"
 	"sync"
 	"time"
 
@@ -153,6 +154,11 @@ func (sp *spanProcessor) saveSpan(span *model.Span, tenant string) {
 	}
 
 	startTime := time.Now()
+	// append server received timestamp to span's tags
+	span.Tags = append(span.Tags, model.KeyValue{
+		Key:  "_stime",
+		VStr: strconv.FormatInt(startTime.UnixMilli(), 10),
+	})
 	// Since we save spans asynchronously from receiving them, we cannot reuse
 	// the inbound Context, as it may be cancelled by the time we reach this point,
 	// so we need to start a new Context.

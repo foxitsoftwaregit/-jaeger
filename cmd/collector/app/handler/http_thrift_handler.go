@@ -17,6 +17,7 @@ package handler
 
 import (
 	"fmt"
+	"github.com/jaegertracing/jaeger/cmd/collector/app/exnet"
 	"html"
 	"io"
 	"mime"
@@ -84,6 +85,11 @@ func (aH *APIHandler) SaveSpan(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, fmt.Sprintf(UnableToReadBodyErrFormat, err), http.StatusBadRequest)
 		return
 	}
+	ip := exnet.ClientPublicIP(r)
+	if ip == "" {
+		ip = exnet.ClientIP(r)
+	}
+	batch.Process.Tags = append(batch.Process.Tags, &tJaeger.Tag{Key: "remoteAddr", VStr: &ip})
 	batches := []*tJaeger.Batch{batch}
 	opts := SubmitBatchOptions{InboundTransport: processor.HTTPTransport}
 	if _, err = aH.jaegerBatchesHandler.SubmitBatches(batches, opts); err != nil {
