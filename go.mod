@@ -13,7 +13,7 @@ require (
 	github.com/go-kit/kit v0.12.0
 	github.com/go-openapi/errors v0.20.2
 	github.com/go-openapi/loads v0.21.1
-	github.com/go-openapi/runtime v0.23.3
+	github.com/go-openapi/runtime v0.25.0
 	github.com/go-openapi/spec v0.20.6
 	github.com/go-openapi/strfmt v0.21.3
 	github.com/go-openapi/swag v0.22.1
@@ -50,12 +50,12 @@ require (
 	go.opentelemetry.io/collector v0.57.2
 	go.opentelemetry.io/collector/pdata v0.57.2
 	go.opentelemetry.io/collector/semconv v0.57.2
-	go.opentelemetry.io/otel v1.9.0
+	go.opentelemetry.io/otel v1.11.1
 	go.uber.org/atomic v1.9.0
 	go.uber.org/automaxprocs v1.5.1
 	go.uber.org/zap v1.22.0
 	golang.org/x/net v0.0.0-20220520000938-2e3eb7b945c2
-	golang.org/x/sys v0.0.0-20220520151302-bc2c85ada10a
+	golang.org/x/sys v0.0.0-20220919091848-fb04ddd9f9c8
 	google.golang.org/grpc v1.48.0
 	google.golang.org/protobuf v1.28.1
 	gopkg.in/yaml.v2 v2.4.0
@@ -139,7 +139,7 @@ require (
 	go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc v0.33.0 // indirect
 	go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp v0.33.0 // indirect
 	go.opentelemetry.io/otel/metric v0.31.0 // indirect
-	go.opentelemetry.io/otel/trace v1.9.0 // indirect
+	go.opentelemetry.io/otel/trace v1.11.1 // indirect
 	go.uber.org/multierr v1.8.0 // indirect
 	golang.org/x/crypto v0.0.0-20220622213112-05595931fe9d // indirect
 	golang.org/x/text v0.3.7 // indirect
