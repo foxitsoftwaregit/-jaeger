@@ -17,7 +17,6 @@ package handler
 import (
 	"context"
 	"fmt"
-
 	otlp2jaeger "github.com/open-telemetry/opentelemetry-collector-contrib/pkg/translator/jaeger"
 	"go.opentelemetry.io/collector/component"
 	"go.opentelemetry.io/collector/config"
@@ -125,6 +124,7 @@ func applyHTTPSettings(cfg *confighttp.HTTPServerSettings, opts *flags.HTTPOptio
 	if opts.TLS.Enabled {
 		cfg.TLSSetting = applyTLSSettings(&opts.TLS)
 	}
+	cfg.IncludeMetadata = true
 }
 
 func applyTLSSettings(opts *tlscfg.Options) *configtls.TLSServerSetting {
@@ -162,6 +162,18 @@ func (c *consumerDelegate) consume(ctx context.Context, td ptrace.Traces) error 
 		return err
 	}
 	for _, batch := range batches {
+		for _, span := range batch.GetSpans() {
+			for _, tag := range span.GetTags() {
+				if tag.GetKey() == "http.client_ip" {
+					span.Tags = append(span.GetTags(), model.KeyValue{
+						Key:  "remoteAddr",
+						VStr: tag.GetVStr(),
+					})
+					break
+				}
+
+			}
+		}
 		err := c.batchConsumer.consume(ctx, batch)
 		if err != nil {
 			return err
