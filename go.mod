@@ -9,7 +9,7 @@ require (
 	github.com/bsm/sarama-cluster v2.1.13+incompatible
 	github.com/crossdock/crossdock-go v0.0.0-20160816171116-049aabb0122b
 	github.com/dgraph-io/badger/v3 v3.2103.5
-	github.com/fsnotify/fsnotify v1.6.0
+	github.com/fsnotify/fsnotify v1.7.0
 	github.com/go-kit/kit v0.13.0
 	github.com/go-logr/zapr v1.2.4
 	github.com/go-openapi/errors v0.20.3
@@ -40,13 +40,13 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.16.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/xdg-go/scram v1.1.2
 	go.opentelemetry.io/collector/component v0.85.0
 	go.opentelemetry.io/collector/config/configgrpc v0.85.0
 	go.opentelemetry.io/collector/config/confighttp v0.85.0
-	go.opentelemetry.io/collector/config/configtls v0.85.0
+	go.opentelemetry.io/collector/config/configtls v0.102.0
 	go.opentelemetry.io/collector/consumer v0.85.0
 	go.opentelemetry.io/collector/extension v0.85.0
 	go.opentelemetry.io/collector/pdata v1.0.0-rcv0014
@@ -65,9 +65,9 @@ require (
 	go.opentelemetry.io/otel/trace v1.18.0
 	go.uber.org/atomic v1.11.0
 	go.uber.org/automaxprocs v1.5.3
-	go.uber.org/zap v1.25.0
+	go.uber.org/zap v1.27.0
 	golang.org/x/net v0.15.0
-	golang.org/x/sys v0.12.0
+	golang.org/x/sys v0.14.0
 	google.golang.org/grpc v1.58.1
 	google.golang.org/protobuf v1.31.0
 	gopkg.in/yaml.v2 v2.4.0
@@ -76,7 +76,6 @@ require (
 require (
 	github.com/VividCortex/gohistogram v1.0.0 // indirect
 	github.com/asaskevich/govalidator v0.0.0-20230301143203-a9d515a09cc2 // indirect
-	github.com/benbjohnson/clock v1.3.0 // indirect
 	github.com/beorn7/perks v1.0.1 // indirect
 	github.com/cenkalti/backoff/v4 v4.2.1 // indirect
 	github.com/cespare/xxhash v1.1.0 // indirect
@@ -95,6 +94,7 @@ require (
 	github.com/go-openapi/analysis v0.21.4 // indirect
 	github.com/go-openapi/jsonpointer v0.19.5 // indirect
 	github.com/go-openapi/jsonreference v0.20.0 // indirect
+	github.com/go-viper/mapstructure/v2 v2.0.0-alpha.1 // indirect
 	github.com/golang/glog v1.1.0 // indirect
 	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	github.com/golang/snappy v0.0.4 // indirect
@@ -116,7 +116,7 @@ require (
 	github.com/json-iterator/go v1.1.12 // indirect
 	github.com/klauspost/compress v1.16.7 // indirect
 	github.com/knadh/koanf v1.5.0 // indirect
-	github.com/knadh/koanf/v2 v2.0.1 // indirect
+	github.com/knadh/koanf/v2 v2.1.1 // indirect
 	github.com/kr/text v0.2.0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
 	github.com/mailru/easyjson v0.7.7 // indirect
@@ -147,7 +147,7 @@ require (
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
-	github.com/stretchr/objx v0.5.0 // indirect
+	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/subosito/gotenv v1.4.2 // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
@@ -158,10 +158,10 @@ require (
 	go.opentelemetry.io/collector/config/configauth v0.85.0 // indirect
 	go.opentelemetry.io/collector/config/configcompression v0.85.0 // indirect
 	go.opentelemetry.io/collector/config/confignet v0.85.0 // indirect
-	go.opentelemetry.io/collector/config/configopaque v0.85.0 // indirect
+	go.opentelemetry.io/collector/config/configopaque v1.9.0 // indirect
 	go.opentelemetry.io/collector/config/configtelemetry v0.85.0 // indirect
 	go.opentelemetry.io/collector/config/internal v0.85.0 // indirect
-	go.opentelemetry.io/collector/confmap v0.85.0 // indirect
+	go.opentelemetry.io/collector/confmap v0.102.0 // indirect
 	go.opentelemetry.io/collector/exporter v0.85.0 // indirect
 	go.opentelemetry.io/collector/extension/auth v0.85.0 // indirect
 	go.opentelemetry.io/collector/featuregate v1.0.0-rcv0014 // indirect
