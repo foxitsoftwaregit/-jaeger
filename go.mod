@@ -69,7 +69,7 @@ require (
 	golang.org/x/net v0.15.0
 	golang.org/x/sys v0.12.0
 	google.golang.org/grpc v1.58.1
-	google.golang.org/protobuf v1.31.0
+	google.golang.org/protobuf v1.34.2
 	gopkg.in/yaml.v2 v2.4.0
 )
 
