@@ -9,7 +9,7 @@ require (
 	github.com/bsm/sarama-cluster v2.1.13+incompatible
 	github.com/crossdock/crossdock-go v0.0.0-20160816171116-049aabb0122b
 	github.com/dgraph-io/badger/v3 v3.2103.5
-	github.com/fsnotify/fsnotify v1.6.0
+	github.com/fsnotify/fsnotify v1.7.0
 	github.com/go-kit/kit v0.13.0
 	github.com/go-logr/zapr v1.2.4
 	github.com/go-openapi/errors v0.20.3
@@ -40,13 +40,13 @@ require (
 	github.com/spf13/cobra v1.7.0
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.16.0
-	github.com/stretchr/testify v1.8.4
+	github.com/stretchr/testify v1.9.0
 	github.com/uber/jaeger-client-go v2.30.0+incompatible
 	github.com/xdg-go/scram v1.1.2
 	go.opentelemetry.io/collector/component v0.85.0
 	go.opentelemetry.io/collector/config/configgrpc v0.85.0
 	go.opentelemetry.io/collector/config/confighttp v0.85.0
-	go.opentelemetry.io/collector/config/configtls v0.85.0
+	go.opentelemetry.io/collector/config/configtls v1.17.0
 	go.opentelemetry.io/collector/consumer v0.85.0
 	go.opentelemetry.io/collector/extension v0.85.0
 	go.opentelemetry.io/collector/pdata v1.0.0-rcv0014
@@ -67,7 +67,7 @@ require (
 	go.uber.org/automaxprocs v1.5.3
 	go.uber.org/zap v1.25.0
 	golang.org/x/net v0.15.0
-	golang.org/x/sys v0.12.0
+	golang.org/x/sys v0.14.0
 	google.golang.org/grpc v1.58.1
 	google.golang.org/protobuf v1.31.0
 	gopkg.in/yaml.v2 v2.4.0
@@ -147,7 +147,7 @@ require (
 	github.com/spf13/afero v1.9.5 // indirect
 	github.com/spf13/cast v1.5.1 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
-	github.com/stretchr/objx v0.5.0 // indirect
+	github.com/stretchr/objx v0.5.2 // indirect
 	github.com/subosito/gotenv v1.4.2 // indirect
 	github.com/uber/jaeger-lib v2.4.1+incompatible // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
@@ -158,7 +158,7 @@ require (
 	go.opentelemetry.io/collector/config/configauth v0.85.0 // indirect
 	go.opentelemetry.io/collector/config/configcompression v0.85.0 // indirect
 	go.opentelemetry.io/collector/config/confignet v0.85.0 // indirect
-	go.opentelemetry.io/collector/config/configopaque v0.85.0 // indirect
+	go.opentelemetry.io/collector/config/configopaque v1.17.0 // indirect
 	go.opentelemetry.io/collector/config/configtelemetry v0.85.0 // indirect
 	go.opentelemetry.io/collector/config/internal v0.85.0 // indirect
 	go.opentelemetry.io/collector/confmap v0.85.0 // indirect
