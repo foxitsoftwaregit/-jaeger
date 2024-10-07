@@ -43,7 +43,7 @@ jobs:
       run: make test-ci
 
     - name: Upload coverage to codecov
-      uses: codecov/codecov-action@894ff025c7b54547a9a2a1e9f228beae737ad3c2
+      uses: codecov/codecov-action@b9fd7d16f6d7d1b5d2bec1a2887e65ceed900238
       with:
         file: cover.out
         verbose: true
